@@ -125,7 +125,7 @@
     <div><input type="text" v-model="message"></div>
     使用该指令后,双向绑定无效了。
     </div>  
-## 三.自定义指令
+## 三.自定义指令(用的不多)
     ```Vue.directive自定义指令
     el: 指令所绑定的元素，可以用来直接操作DOM。
     binding: 一个对象，包含指令的很多信息。
