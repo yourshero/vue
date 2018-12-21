@@ -199,4 +199,27 @@
     1.Vue.set(outData,'count',4);
     2.outData.count++;
  ### 为什么有Vue.set的存在？
-    
+    当你利用索引直接设置一个项时，vue不会为我们自动更新。
+    当你修改数组的长度时，vue不会为我们自动更新。
+     <h1>Vue.set 全局操作</h1>
+    <hr>
+    <div id="app">
+        <ul>
+            <li v-for=" aa in arr">{{aa}}</li>
+        </ul>
+    </div>
+    <button onclick="add()">外部添加</button>
+    <script type="text/javascript">
+        function add(){
+            console.log("我已经执行了");
+           app.arr[1]='ddd';
+           //Vue.set(app.arr,1,'ddd');
+        }
+        var outData={
+            arr:['aaa','bbb','ccc']
+        };
+        var app=new Vue({
+            el:'#app',
+            data:outData
+        })
+    </script>
