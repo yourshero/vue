@@ -126,7 +126,7 @@
     使用该指令后,双向绑定无效了。
     </div>  
 ## 三.自定义指令(用的不多)
-    ### 1.Vue.directive自定义指令
+### 1.Vue.directive自定义指令
     ```el: 指令所绑定的元素，可以用来直接操作DOM。
     binding: 一个对象，包含指令的很多信息。
     vnode: Vue编译生成的虚拟节点。
@@ -173,3 +173,28 @@
           }
         }
         </script>```
+### 2.Vue.set全局操作
+    import Vue from 'vue';
+      var outData={
+        count:1,
+        goodName:'car'
+      };
+      Vue.set(outData,'count',4);
+    export default {
+      name: 'HelloWorld',
+      data () {
+        return {
+          num:outData,
+          color:'red'
+        }
+      },
+      methods:{
+        add:function(){
+          return outData.count++;
+          //return this.num.count++;
+        }
+      }
+    }
+    其实这里改变count方法多:
+    1.Vue.set(outData,'count',4);
+    2.outData.count++;
