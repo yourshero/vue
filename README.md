@@ -1,9 +1,10 @@
 # vue入坑记
 
-### 1.安装
+## 一.安装
     npm install -g vue-cli
     vue init webpack my-project
     npm run dev
+## 二.指令
 ### 2.v-if与v-show
     v-if： 判断是否加载，可以减轻服务器的压力，在需要时加载。例如模拟一个用户登录状态，在用户登录后显示用户名称
     v-show：调整css dispaly属性，可以使客户端操作更加流畅。
@@ -109,7 +110,7 @@
     <div :class="isOk?classA:classB">4、绑定class中的三元表达式判断</div>
     <div :style="{color:red,fontSize:font}">5、绑定style</div>
     <div :style="styleObject">6、用对象绑定style样式</div>
-### 其他指令
+### 9.其他指令
     v-pre指令:v-pre就不会输出vue中的data值
     <div v-pre>{{message}}</div>
     v-cloak指令:在vue渲染完指定的整个DOM后才进行显示。它必须和CSS样式一起使用，
@@ -123,4 +124,49 @@
     <div v-once>第一次绑定的值：{{message}}</div>
     <div><input type="text" v-model="message"></div>
     使用该指令后,双向绑定无效了。
-</div>  
+    </div>  
+## 三.自定义指令
+    ```Vue.directive自定义指令
+        <template>
+            <div>
+                <div v-eason="color" id='demo'>
+                  {{num}}
+                </div>
+                <button @click='add'>add</button>
+            </div>  
+        </template>
+        <script>
+        export default {
+          name: 'HelloWorld',
+          data () {
+            return {
+              num:1,
+              color:'red'
+            }
+          },
+          methods:{
+            add:function(){
+              this.num++;
+            }
+          },
+          directives:{
+            eason:{
+                bind:function(el,binding,vnode){//被绑定
+                 el.style = 'color:'+binding.value;
+                },
+                inserted:function(){//绑定到节点
+                      console.log('2 - inserted');
+                },
+                update:function(){//组件更新
+                      console.log('3 - update');
+                },
+                componentUpdated:function(){//组件更新完成
+                      console.log('4 - componentUpdated');
+                },
+                unbind:function(){//解绑
+                      console.log('1 - bind');
+                }
+            }
+          }
+        }
+        </script>```
