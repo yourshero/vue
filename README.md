@@ -127,6 +127,9 @@
     </div>  
 ## 三.自定义指令
     ```Vue.directive自定义指令
+    el: 指令所绑定的元素，可以用来直接操作DOM。
+    binding: 一个对象，包含指令的很多信息。
+    vnode: Vue编译生成的虚拟节点。
         <template>
             <div>
                 <div v-eason="color" id='demo'>
