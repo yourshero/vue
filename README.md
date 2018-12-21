@@ -67,4 +67,60 @@
 ### 4.v-text
       之前我们在html中输出data中的值时用的是 {{xxx}} ，这种情况是有弊端的：当网速很慢或JavaScript出错时，
       会暴露 {{xxx}} ,最好用v-text
-    
+### 5.绑定事件监听器
+        <button v-on:click='add'>+</button>
+        <button @click='reduce'>-</button>
+### 6.v-model指令
+       双向数据绑定
+       .lazy：取代 imput 监听 change 事件。
+       <input type="text" v-model.lazy="message">//文本框输入字符时,不立即更新,等待光标移出input才显示字符
+       .trim：输入去掉首尾空格。
+       .number：开头输入字符串转为数字。
+       <textarea cols="30" rows="10" v-model="message"></textarea>
+       多选按钮绑定一个值(两种写法,注意label作用)
+       <input type="checkbox" id="isTrue" v-model="isTrue">
+       <label for='isTrue'>{{isTrue}}</label>
+       <label><input type="checkbox" id="isTrue" v-model="isTrue">{{isTrue}}</label>
+       多选绑定一个数组
+       <p>
+            <input type="checkbox" id="JSPang" value="JSPang" v-model="web_Names">
+            <label for="JSPang">JSPang</label><br/>
+            <input type="checkbox" id="Panda" value="Panda" v-model="web_Names">
+            <label for="Panda">Panda</label><br/>
+            <input type="checkbox" id="PanPan" value="PanPan" v-model="web_Names">
+            <label for="PanPan">PanPan</label>
+        <p v-text='web_Names'></p>
+        单选按钮绑定数据
+        <input type="radio" id="one" value="男" v-model="sex">
+            <label for="one">男</label>
+            <input type="radio" id="two" value="女" v-model="sex">
+            <label for="one">女</label>
+        <p>{{sex}}</p>
+### 7.v-bind指令
+    <!-- 完整语法 -->
+    <a v-bind:href="url"></a>
+    <!-- 缩写 -->
+    <a :href="url"></a>
+### 8.绑定css样式
+    绑定的值必须在vue中的data属性中进行声明
+    <div :class="className">1、绑定classA</div>
+    <div :class="{classA:isOk}">2、绑定class中的判断</div>
+    <div v-bind:class="[classData]">3、绑定class中的数组</div>
+    <div :class="isOk?classA:classB">4、绑定class中的三元表达式判断</div>
+    <div :style="{color:red,fontSize:font}">5、绑定style</div>
+    <div :style="styleObject">6、用对象绑定style样式</div>
+### 其他指令
+    v-pre指令:v-pre就不会输出vue中的data值
+    <div v-pre>{{message}}</div>
+    v-cloak指令:在vue渲染完指定的整个DOM后才进行显示。它必须和CSS样式一起使用，
+    [v-cloak] {
+        display: none;
+    }
+    <div v-cloak>
+      {{ message }}
+    </div>
+    v-once指令:在第一次DOM时进行渲染，渲染完成后视为静态内容，跳出以后的渲染过程。
+    <div v-once>第一次绑定的值：{{message}}</div>
+    <div><input type="text" v-model="message"></div>
+    使用该指令后,双向绑定无效了。
+</div>  
