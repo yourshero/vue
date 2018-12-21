@@ -198,3 +198,5 @@
     其实这里改变count方法多:
     1.Vue.set(outData,'count',4);
     2.outData.count++;
+ ### 为什么有Vue.set的存在？
+    
