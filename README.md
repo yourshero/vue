@@ -65,5 +65,6 @@
     }
 ```
 ### 4.v-text
-      之前我们在html中输出data中的值时用的是 {{xxx}} ，这种情况是有弊端的：当网速很慢或JavaScript出错时，会暴露 {{xxx}} ,最好用v-text
+      之前我们在html中输出data中的值时用的是 {{xxx}} ，这种情况是有弊端的：当网速很慢或JavaScript出错时，
+      会暴露 {{xxx}} ,最好用v-text
     
